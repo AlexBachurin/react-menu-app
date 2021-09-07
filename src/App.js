@@ -17,7 +17,24 @@ const uniqCategories = Array.from(uniqCategoriesSet);
 function App() {
   //store menu data and categories
   const [menuList, setMenuList] = useState(data);
-  const [category, setCategory] = useState(uniqCategories)
+  const [category, setCategory] = useState('all')
+
+  //filter by category
+  const filterByCategory = (name) => {
+    // //get new filtered filtered list by this category name
+    // const filteredMenu = menuList.filter(item => item.category === name);
+    setCategory(name);
+  }
+
+  const filterMenu = () => {
+    //when we pass if category is by default 'all' we return our menulist from state, else we filter it
+    if (category === 'all') {
+      return menuList;
+    } else {
+      return menuList.filter(item => item.category === category);
+    }
+  }
+
   return (
     <main>
       <section className="menu section">
@@ -25,8 +42,9 @@ function App() {
           <h1>Our Menu</h1>
           <div className="underline"></div>
         </div>
-        <Categories category={category} />
-        <Menu menuList={menuList} />
+        <Categories filterByCategory={filterByCategory} category={uniqCategories} />
+        {/* every time we render, before we pass menuList we should filter it */}
+        <Menu menuList={filterMenu(menuList)} />
       </section>
     </main>
   );
