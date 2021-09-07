@@ -8,13 +8,11 @@ import data from './data';
 const categories = data.map(item => {
   return item.category;
 })
-console.log(categories);
 //get unique categories and add all category
 const uniqCategoriesSet = new Set(['all', ...categories])
-console.log(uniqCategoriesSet)
 //and transform it into array
 const uniqCategories = Array.from(uniqCategoriesSet);
-console.log(uniqCategories)
+
 
 function App() {
   //store menu data and categories
