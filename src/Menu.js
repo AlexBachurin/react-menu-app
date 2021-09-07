@@ -1,8 +1,9 @@
 import React from 'react'
 
-export default function Menu() {
+export default function Menu(props) {
+    console.log(props)
     return (
-        <div>
+        <div className="section-center">
 
         </div>
     )
